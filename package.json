@@ -1,0 +1,21 @@
+{
+  "name": "pslides",
+  "version": "0.1.0",
+  "description": "presentation with mdx-deck",
+  "main": "index.js",
+  "repository": "https://github.com/nwmaker/pslides.git",
+  "author": "nwmaker <makernw@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx"
+  },
+  "devDependencies": {
+    "mdx-deck": "^1.7.7"
+  },
+  "dependencies": {
+    "react-video-players": "^0.1.11",
+    "superbox": "^2.1.0"
+  }
+}

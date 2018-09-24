@@ -1,0 +1,241 @@
+import  { Image } from 'mdx-deck'
+import { FullScreenCode } from 'mdx-deck/layouts'
+import QuoteLayout from './QuoteLayout'
+
+export { default as theme } from './theme'
+
+# AutoPCB: Draw the circuits, Get the board. 
+
+** Not yet! **
+
+---
+
+# NWMaker 
+
+@nwmaker
+
+---
+
+# Design Flow
+
+![](/images/flow.png)
+
+---
+
+# Design Steps
+
+1. Run "create boardname width height"
+
+2. Run "build boardname"
+
+3. modify generated SVG, run "update boardname"
+
+4. modify text file, run "build boardname"
+
+5. repeat step 3 or step 4 
+
+6. run "gerber boardname" to generate Gerber files
+
+---
+
+# Create Board
+
+```jsx
+(autopcb-env) demo $./create hello 30 40
+start to create the board ...
+  boardname: hello
+  width: 30
+  length: 40
+start to generate the template for AutoPCB...
+the template is completed successfully.
+start to generate vias for AutoPCB...
+addvias completed successfully.
+hello is created successfully
+```
+
+---
+
+# Build SVG for the Board
+
+```jsx
+(autopcb-env) demo $./build hello
+start to create svg for the board ...
+  boardname: hello
+-- Processing AutoPCB's configuration file
+-- Processing board's configuration file
+-- Creating board
+   ...
+-- Done!
+```
+
+---
+
+![](/images/emptydesign.png)
+
+---
+
+# Change Outline of the Board
+
+---
+
+## default outline in hello.json
+
+```jsx
+    "shape": {
+      "height": 40.0,
+      "style": "stroke",
+      "type": "rect",
+      "width": 30.0
+    }
+```
+
+---
+
+## new outline in hello.json
+
+```jsx
+    "shape": {
+      "height": 45.0,
+      "style": "stroke",
+      "type": "path",
+      "value": "m -37.771994,-19.984607 c 0.04322,-0.512431...",
+      "width": 45.0
+    }
+``` 
+
+---
+
+![](/images/newoutline.png)
+
+---
+
+# Add Graphics
+
+---
+
+## initial shapes empty in hello.json
+
+```jsx
+"shapes": {
+},
+```
+
+---
+
+## add all graphics
+
+```jsx
+  "NW": {
+      "footprint": "nwlogo", 
+      "layer": "top", 
+      "location": [
+        15.241101, 
+        -5.896938
+      ], 
+      ... 
+    }
+```
+
+---
+
+![](/images/graphics.png)
+
+---
+
+# Add Components
+
+---
+
+## no component in hello.json
+
+```jsx
+"componentss": {
+},
+```
+
+---
+
+## add all components
+
+```jsx
+  "BATTERY": {
+      "footprint": "LINX-BAT-HLD-001", 
+      "layer": "bottom", 
+      "location": [
+        -0.549978, 
+        -11.07914
+      ], ...
+```
+
+---
+
+![](/images/components.png)
+
+---
+
+# Route
+
+---
+
+![](/images/routed.png)
+
+---
+
+# Generate Gerber Files
+
+```jsx
+(autopcb-env) demo $./gerber hello
+```
+
+---
+
+# PCB House
+
+* There are many PCB manufacturer around world.
+
+* AutoPCB is trying to find partners for easy order with options.
+
+---
+
+# Arrival of boards
+
+![](/images/snowy2.png)
+
+---
+
+# AutoPCB: draw the circuits, get the board
+
+** Feasible **
+
+---
+
+# Future Plan
+
+* run the transforms between text, SVG, and gerber
+
+* integrate an SVG editor for line drawing
+
+* integrate a text editor for configuration and path data
+
+* user signup and login
+
+* API: New, Open, Save, Build, Update, Gerber, Upload, Order, etc.
+
+---
+
+# AutoPCB: draw the circuits, get the board
+
+** Let's do it **
+
+---
+
+# Thank you!
+
+[https://pslides.now.sh/](https://pslides.now.sh)
+
+---
+
+### References
+
+* [https://github.com/nwmaker/PurpleSnowy](https://github.com/nwmaker/PurpleSnowy)
+
